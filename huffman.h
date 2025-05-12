@@ -15,7 +15,7 @@ typedef struct Node{
 Node *genNode(char c, int frequency);
 
 
-// --- Funcao auxilixar para comparar dois valor (ordem descrescente) --- //
+// --- Funcao auxilixar para comparar dois valor --- //
 int comp(const void *a, const void *b);
 
 
