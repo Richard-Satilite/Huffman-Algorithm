@@ -1,0 +1,47 @@
+Para uma sequencia de fibonacci como abaixo:
+
+C F
+
+a 1
+b 1
+c 2
+d 3
+e 5
+f 8
+g 13
+h 21
+
+Combinamos os nos com menor frequencia, entao:
+
+1) a <-> b => (ab) <-> 2
+
+2) (ab) <-> c => (abc) <-> 4
+
+3) (d) <-> (abc) => (abcd) <-> 7
+
+4) (e) <-> (abcd) => (abcde) <-> 12
+
+5) (f) <-> (abcde) => (abcdef) <-> 20
+
+6) (g) <-> (abcdef) => (abcdefg) <-> 33
+
+7) (h) <-> (abcdefg) => (abcdefgh) <-> 54
+
+A arvore final fica:
+
+(((((((ab)c)d)e)f)g)h) 54 -> [a:1, b:1, c:2, d:3, e:5, f:8, g:13, h:21]
+
+Agora, atribuimos os codigos, seguindo o caminho da arvore (0 para a esquerda e 1 para a direita)
+
+a	0000
+b	0001
+c	001
+d	01
+e	10
+f	110
+g	1110
+h	1111
+
+Que sera o codigo de huffman para o conjunto de frequencia baseado na sequencia de fibanacci fornecida. Nesse
+caso, a codificacao gerada sera otima pois minimiza a soma das frequencias multiplicadas pelos comprimentos
+dos codigos. Ela segue o principio de dar codigos mais curtos para caracteres mais frequentes.

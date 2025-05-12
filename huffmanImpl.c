@@ -23,7 +23,7 @@ int comp(const void* a, const void* b) {
     Node* nodeA = *(Node**)a;
     Node* nodeB = *(Node**)b;
     
-    return nodeB->frequency - nodeA->frequency;
+    return nodeA->frequency - nodeB->frequency;
 }
 
 Node* buildHuffmanTree(char* string, int* frequencies, int n) {
@@ -36,14 +36,18 @@ Node* buildHuffmanTree(char* string, int* frequencies, int n) {
     qsort(nodes, n, sizeof(Node*), comp);
     
     while (n > 1) {
-        Node* left = nodes[n - 1];
-        Node* right = nodes[n - 2];
+        Node* left = nodes[0];
+        Node* right = nodes[1];
 
         Node* newNode = genNode('\0', left->frequency + right->frequency);
         newNode->left = left;
         newNode->right = right;
 
-        nodes[n - 2] = newNode;
+        nodes[0] = newNode;
+
+	for(int i = 1; i < n - 1; i++)
+		nodes[i] = nodes[i+1];
+
         n--;
         
         qsort(nodes, n, sizeof(Node*), comp);
